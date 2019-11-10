@@ -49,6 +49,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      UserMailer.welcome_email(@user).deliver_now
+
       log_in @user
       @user.update_attributes(admin: true) if params[:user][:admin] == '1'
       flash[:success] = "Sign up success!"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190404211338) do
+ActiveRecord::Schema.define(version: 20191110205354) do
 
   create_table "antennas", force: :cascade do |t|
     t.integer "user_id"
@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 20190404211338) do
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

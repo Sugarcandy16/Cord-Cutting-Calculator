@@ -4,8 +4,8 @@ class UserMailer < ApplicationMailer
         mail(to: @user.email, subject: 'Welcome to Cord-Cutting-Calculator')
     end
     def forgot_password(user)
-      @user = user
-      @greeting = "Hi"
-      #mail(to: @user.email, subject: 'Reset password instructions')
+          @user = user
+          @greeting = "Hi"
+          mail(to: user.email, subject: 'Reset password instructions')
     end
 end

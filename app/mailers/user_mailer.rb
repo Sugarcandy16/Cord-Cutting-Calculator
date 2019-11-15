@@ -6,7 +6,6 @@ class UserMailer < ApplicationMailer
     def forgot_password(user)
       @user = user
       @greeting = "Hi"
-      flash[:notice] = 'Password has been reset!'
       #mail(to: @user.email, subject: 'Reset password instructions')
     end
 end

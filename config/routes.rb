@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   resources :packages
   resources :channels
   resources :users
-  
-  post 'password/forgot', to: 'password#forgot'
-  post 'password/reset', to: 'password#reset'
+  resources :password_resets
 
   get '/home', to: 'pages#home'
 

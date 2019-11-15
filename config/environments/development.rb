@@ -65,6 +65,6 @@ Rails.application.configure do
   password:             'passwordforapp',
   authentication:       'plain',
   enable_starttls_auto: true  }
-  config.action_mailer.default_url_options = {:host =>'localhost:3000'}
+  config.action_mailer.default_url_options = {:host =>'mighty-cliffs-17862.herokuapp.com'}
   #config.web_console.whitelisted_ips = '165.91.13.54'
 end

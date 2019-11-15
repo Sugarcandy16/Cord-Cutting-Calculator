@@ -61,10 +61,10 @@ Rails.application.configure do
   address:              'smtp.gmail.com',
   port:                 587,
   domain:               'gmail.com',
-  user_name:            'cordcuttingcalculator',
+  user_name:            'cordcuttingcalculator@gmail.com',
   password:             'passwordforapp',
   authentication:       'plain',
   enable_starttls_auto: true  }
   
-  config.web_console.whitelisted_ips = '165.91.13.54'
+  #config.web_console.whitelisted_ips = '165.91.13.54'
 end

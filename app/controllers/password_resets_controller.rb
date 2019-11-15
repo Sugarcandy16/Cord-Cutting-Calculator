@@ -6,8 +6,7 @@ class PasswordResetsController < ApplicationController
     redirect_to home_path
   end
   def edit
-    flash[:notice]="Hey"
-    #@user = User.find_by_password_reset_token!(params[:id])
+    @user = User.find_by_password_reset_token!(params[:id])
   end
   def update
     @user = User.find_by_password_reset_token!(params[:id])

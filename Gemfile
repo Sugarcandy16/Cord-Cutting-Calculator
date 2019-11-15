@@ -18,8 +18,8 @@ gem 'seed_dump'
 
 
 group :development, :test do
-  gem 'sqlite3', '1.3.13'
-  #gem 'pg', '~> 0.21'
+  #gem 'sqlite3', '1.3.13'
+  gem 'pg', '~> 0.21'
   gem 'byebug',  '9.0.6', platform: :mri
   gem "rspec"
   gem "rspec-rails"
@@ -42,7 +42,7 @@ group :development do
 end
 
 group :production do
- # gem 'pg', '~> 0.21'
+  gem 'pg', '~> 0.21'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

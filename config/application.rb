@@ -5,7 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+config.middleware.use PDFKit::Middleware, :print_media_type => true
 module ReMake
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

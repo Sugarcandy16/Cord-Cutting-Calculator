@@ -15,7 +15,8 @@ gem 'bootstrap-will_paginate'
 gem 'will_paginate', '~> 3.1.0'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'seed_dump'
-
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   #gem 'sqlite3', '1.3.13'

@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get '/users/:id/calculator', to: 'users#calculator', as: 'calculator'
   post '/users/:id/calculator', to: 'users#calculate', as: 'calculate'
   
+  get '/users/:id/pdfgen', to: 'users#pdfgen', as: 'pdfgen'
+
   get '/users/:id/result/:flag_one_pack/:flag_dvr/:budget',to:'users#result', as:'result'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -71,6 +71,7 @@
     <% else %>
       <h3 style="font-weight: bold; margin-bottom: 10%">Sorry, you budget is too low or the channels you selected are invalid. Please calculate again.</h2>
     <% end %>
+          <%= button_to "Generate PDF", pdfgen_path(request.base_url + request.path) , class: "btn btn-primary" %>
           <%= link_to 'Go back to calculator', calculator_path %>
 </div>
 </body>

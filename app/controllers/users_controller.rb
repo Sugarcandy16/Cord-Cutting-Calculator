@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include UsersHelper
-  
+  require 'pdfkit'
   before_action :set_user, only: [:show, :edit, :update, :destroy, :calculator, :calculate, :change_password, :update_password]
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :calculator, :change_password, :update_password]
   before_action :admin_user, only: [:index]
@@ -168,5 +168,12 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless @user == current_user || admin?
+    end
+    
+    def pdfgen(html)
+      kit = PDFKit.new(html, :page_size => 'Letter')
+      pdf = kit.to_pdf
+      file = kit.to_file('/result.pdf')
+      File.open("result.pdf","w"){|f| f.write(data)}
     end
 end

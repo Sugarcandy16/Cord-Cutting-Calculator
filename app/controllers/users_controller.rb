@@ -135,7 +135,13 @@ class UsersController < ApplicationController
 
     redirect_to result_path(params[:id], params[:flag_one_pack], params[:flag_dvr], params[:budget])
   end
-
+      
+  def pdfgen(html)
+      kit = PDFKit.new(html, :page_size => 'Letter')
+      pdf = kit.to_pdf
+      file = kit.to_file('/result.pdf')
+      File.open("result.pdf","w"){|f| f.write(data)}
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -169,11 +175,5 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_url) unless @user == current_user || admin?
     end
-    
-    def pdfgen(html)
-      kit = PDFKit.new(html, :page_size => 'Letter')
-      pdf = kit.to_pdf
-      file = kit.to_file('/result.pdf')
-      File.open("result.pdf","w"){|f| f.write(data)}
-    end
+
 end

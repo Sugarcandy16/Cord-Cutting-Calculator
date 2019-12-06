@@ -140,7 +140,7 @@ class UsersController < ApplicationController
       #PDFKit.from_url(@html, 'out.pdf')
       kit = PDFKit.new(@html, :page_size => 'Letter')
       pdf = kit.to_pdf
-      file = kit.to_file('/pdf')
+      file = kit.to_file('tmp/out.pdf')
       #File.open("result.pdf","w"){|f| f.write(data)}
   end
   private

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :calculator, :change_password, :update_password]
   before_action :admin_user, only: [:index]
   before_action :correct_user, only: [:show, :edit, :update, :destroy, :calculator, :change_password, :update_password]
-
+  before_action :current_url, only: [:pdfgen]
   # GET /users
   # GET /users.json
   def index
@@ -136,7 +136,7 @@ class UsersController < ApplicationController
     redirect_to result_path(params[:id], params[:flag_one_pack], params[:flag_dvr], params[:budget])
   end
       
-  def pdfgen(html)
+  def pdfgen
       kit = PDFKit.new(html, :page_size => 'Letter')
       pdf = kit.to_pdf
       file = kit.to_file('/result.pdf')
@@ -175,5 +175,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_url) unless @user == current_user || admin?
     end
-
+    def current_url
+      @html=request.base_url + request.path
+    end
 end

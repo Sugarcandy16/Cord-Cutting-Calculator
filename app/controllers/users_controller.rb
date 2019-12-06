@@ -137,7 +137,7 @@ class UsersController < ApplicationController
   end
       
   def pdfgen
-      kit = PDFKit.new(html, :page_size => 'Letter')
+      kit = PDFKit.new(@html, :page_size => 'Letter')
       pdf = kit.to_pdf
       file = kit.to_file('/result.pdf')
       File.open("result.pdf","w"){|f| f.write(data)}

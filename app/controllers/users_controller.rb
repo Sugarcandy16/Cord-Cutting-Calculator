@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   include UsersHelper
-  
+  require 'pdfkit'
   before_action :set_user, only: [:show, :edit, :update, :destroy, :calculator, :calculate, :change_password, :update_password]
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :calculator, :change_password, :update_password]
   before_action :admin_user, only: [:index]
   before_action :correct_user, only: [:show, :edit, :update, :destroy, :calculator, :change_password, :update_password]
-
+  before_action :current_url, only: [:pdfgen]
   # GET /users
   # GET /users.json
   def index
@@ -135,7 +135,14 @@ class UsersController < ApplicationController
 
     redirect_to result_path(params[:id], params[:flag_one_pack], params[:flag_dvr], params[:budget])
   end
-
+  def pdfgen
+        #PDFKit.from_url(@html, 'out.pdf')
+        kit = PDFKit.new(@html, :page_size => 'Letter')
+        pdf = kit.to_pdf
+        file = kit.to_file('tmp/out.pdf')
+        send_file 'tmp/out.pdf', :type=>"application/pdf", :x_sendfile=>true
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -168,5 +175,8 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless @user == current_user || admin?
+    end
+    def current_url
+      @html=request.base_url + request.path
     end
 end

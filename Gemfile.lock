@@ -164,6 +164,7 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
+    pdfkit (0.8.4.1)
     pg (0.21.0)
     public_suffix (3.0.3)
     puma (3.9.1)
@@ -291,6 +292,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     will_paginate (3.1.7)
+    wkhtmltopdf-binary (0.12.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -312,6 +314,7 @@ DEPENDENCIES
   jquery-rails (= 4.3.1)
   listen (= 3.1.5)
   omniauth-google-oauth2
+  pdfkit
   pg (~> 0.21)
   puma (= 3.9.1)
   rails (= 5.1.6)
@@ -332,6 +335,7 @@ DEPENDENCIES
   web-console (= 3.5.1)
   webdrivers (~> 3.0)
   will_paginate (~> 3.1.0)
+  wkhtmltopdf-binary
 
 BUNDLED WITH
    1.17.3

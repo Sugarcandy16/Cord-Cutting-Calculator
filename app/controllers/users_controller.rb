@@ -140,7 +140,7 @@ class UsersController < ApplicationController
         kit = PDFKit.new(@html, :page_size => 'Letter')
         pdf = kit.to_pdf
         file = kit.to_file('tmp/out.pdf')
-        Download.new(file)
+        send_file 'tmp/out.pdf', :type=>"application/pdf", :x_sendfile=>true
   end
   
   private

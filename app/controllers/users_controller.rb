@@ -135,15 +135,14 @@ class UsersController < ApplicationController
 
     redirect_to result_path(params[:id], params[:flag_one_pack], params[:flag_dvr], params[:budget])
   end
-  class DownloadsController < ApplicationController
-    def pdfgen
+  def pdfgen
         #PDFKit.from_url(@html, 'out.pdf')
         kit = PDFKit.new(@html, :page_size => 'Letter')
         pdf = kit.to_pdf
         file = kit.to_file('tmp/out.pdf')
         Download.new(file)
-    end
   end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

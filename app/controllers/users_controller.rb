@@ -141,7 +141,7 @@ class UsersController < ApplicationController
       kit = PDFKit.new(@html, :page_size => 'Letter')
       pdf = kit.to_pdf
       file = kit.to_file('tmp/out.pdf')
-      #File.open("result.pdf","w"){|f| f.write(data)}
+      File.open("out.pdf","w"){|f| f.write(data)}
   end
   private
     # Use callbacks to share common setup or constraints between actions.

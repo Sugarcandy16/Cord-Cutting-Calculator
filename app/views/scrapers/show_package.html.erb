@@ -1,0 +1,79 @@
+
+<% if((current_user.blank?) or (!current_user.admin))  %>
+  <script type="text/javascript">
+    window.location.href="/"  // put your correct path in a string here
+  </script>
+<% end %>
+
+<html>
+    <body>
+        <br><br><br><br><br>
+        <% if !session[:update_notice].nil? %>
+            <%= session[:update_notice] %>
+            <% session.delete(:update_notice) %>
+        <% end %><br>
+        <p>
+        Package information for <%=params[:service]%>
+        </p>
+        <br>
+        <p>
+            Packages
+        </p>
+        <br>
+        
+        <table>
+            <tr>
+                <th>Package Name</th>
+                <th>Channels List</th>
+                <th>Number of channels</th>
+                <th>Cost</th>
+            </tr>
+            <% @packages.each do |name, list, count, cost| %>
+                <tr>
+                    <td><%=name%></td>
+                    <td><%=list%></td>
+                    <td><%=count%></td>
+                    <td><%=cost%></td>
+                </tr>
+            <% end %>
+        </table>
+        
+        <br><br><br>
+        
+        
+        <% if !@addons.nil? %>
+            <p>
+                Addons
+            </p>
+            <br>
+        
+            <table>
+                <tr>
+                    <th>Addon Name</th>
+                    <th>Channels List</th>
+                    <th>Number of channels</th>
+                    <th>Cost</th>
+                </tr>
+                <% @addons.each do |name, list, count, cost| %>
+                    <tr>
+                        <td><%=name%></td>
+                        <td><%=list%></td>
+                        <td><%=count%></td>
+                        <td><%=cost%></td>
+                    </tr>
+                <% end %>
+            </table>
+        <% end %>
+        
+        <br>
+        
+        <%= form_tag("/scrape/#{params[:service]}", :method => :post) do %>
+            <%= hidden_field_tag "package_info", :value => @packages %>
+            <%= submit_tag "Commit Info", class: "btn btn-primary btn-lg btn-xlarge" %>
+        <% end %>
+        
+        <br>
+        <%= link_to "Back", scrape_path, class: "btn btn-primary btn-lg btn-xlarge" %>
+        
+    </body>
+</html>

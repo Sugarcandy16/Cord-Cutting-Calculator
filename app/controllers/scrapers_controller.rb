@@ -275,7 +275,6 @@ class ScrapersController < ApplicationController
     
     def show_package
         if params[:service] == "sling"
-            @addons = get_addons_local_sling
             @packages = get_packages_local_sling
         elsif params[:service] == "att"
             @packages = get_packages_local_att

@@ -131,7 +131,8 @@ function filterFunction3() {
             <!--Form for would have channels-->
             <p>
               <h4>Budget</h4>
-              <%= text_field_tag :budget, nil, placeholder: 'Enter your budget', class: 'form-control'%>
+              <%= text_field_tag :budget, nil, placeholder: 'Enter your monthly budget', class: 'form-control'%>
+               <%= radio_button_tag :budget_type, true, false%>
             </p>
             <p>
               <h4>

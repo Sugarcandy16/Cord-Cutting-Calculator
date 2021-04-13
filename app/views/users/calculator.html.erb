@@ -132,7 +132,8 @@ function filterFunction3() {
             <p>
               <h4>Budget</h4>
               <%= text_field_tag :budget, nil, placeholder: 'Enter your monthly budget', class: 'form-control'%>
-               <%= radio_button_tag :budget_type, true, false%>
+               <%= radio_button_tag :budget_type,'Monthly', true, false%>
+               <%= radio_button_tag :budget_type,'Yearly', true, false%>
             </p>
             <p>
               <h4>

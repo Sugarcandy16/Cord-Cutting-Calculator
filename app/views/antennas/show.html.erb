@@ -2,12 +2,12 @@
 <head>
 
 <script>
-function uncheckall(){
+$('#uncheck_all').on("click", function(){
   var check = $('input[type="checkbox"]');
   check.each(function(){
     $(this).attr('checked', false);
   });
-}
+});
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -65,7 +65,7 @@ function filterFunction() {
   <% end %>
 </div>
 <% end %>
-  <%= link_to_function("Reset", "uncheckall()") %>
+  <%= button_tag 'Reset', id: 'uncheck_all', class:'btn btn-primary' %>
   <%= link_to 'Cancel and to back to profile', @user %>
 
 </div>

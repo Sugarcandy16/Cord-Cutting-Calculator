@@ -11,7 +11,7 @@
   localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
   redirect_to :back
   <%# redirect_back(fallback_location: root_path)
-});%>
+});
   $('#uncheck_all').on("click", function() {
    // grouping all the checkbox using the classname
   var checkboxes = $("checkbox");
@@ -23,7 +23,11 @@
     // if they are not selected, checking all the checkbox
     checkboxes.prop("checked",true);
   }
-});
+});%>
+$('#uncheck_all').on("click", function(){
+  var cbxs = $('input[type="checkbox"]');
+  cbxs.prop("checked", !cbxs.prop("checked"));
+})
 <%#var Clear=function(){
   $('input[type="checkbox"]').prop('checked', false);
 } %>

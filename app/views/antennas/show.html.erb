@@ -2,10 +2,10 @@
 <head>
 
 <script>
-var checkboxes = [];
-checkboxes = $$('input').each(function(e){ if(e.type == 'checkbox') checkboxes.push(e) });
-var form = $('options'); /* Replace 'options' with the ID of the FORM element */
-checkboxes = form.getInputs('checkbox');
+$('#check_all').on("click", function(){
+  var check = $('input[type="checkbox"]');
+  check.prop("checked", !check.prop("checked"));
+});
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -59,10 +59,11 @@ function filterFunction() {
       </div>
   </div>
   <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= button_tag 'select / unselect all', id: 'check_all', class:'b' %>
   <% end %>
 </div>
 <% end %>
-  <%= link_to_function("Reset","checkboxes.each(function(e){ e.checked = 0 })") %>
+  
   <%= link_to 'Cancel and to back to profile', @user %>
 
 </div>

@@ -13,6 +13,8 @@ class AntennasController < ApplicationController
       @user.antennas.each do |antenna|
         @antennas << antenna.channel_id
       end
+    else
+      redirect_to root_path
     end
   end
   

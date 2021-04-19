@@ -2,7 +2,7 @@
 <head>
 
 <script>
-function uncheck_all(){
+function uncheckall(){
   var check = $('input[type="checkbox"]');
   check.each(function(){
     $(this).attr('checked', false);
@@ -65,7 +65,7 @@ function filterFunction() {
   <% end %>
 </div>
 <% end %>
-  <%= link_to 'Reset', id: uncheck_all() %>
+  <%= link_to 'Reset', uncheckall() %>
   <%= link_to 'Cancel and to back to profile', @user %>
 
 </div>

@@ -123,9 +123,9 @@ class UsersController < ApplicationController
     else
       params[:budget] = params[:budget].to_f
     end
-    if !params[:budget_type]
-      params[:budget_type] = params[:budget_type]/12
-    end
+    #if !params[:budget_type]
+    #  params[:budget_type] = params[:budget_type]/12
+    #end
     
     if params[:flag_one_pack] == nil
       params[:flag_one_pack] = 'false'

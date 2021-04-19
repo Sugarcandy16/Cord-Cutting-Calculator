@@ -2,7 +2,7 @@ class AntennasController < ApplicationController
   before_action :logged_in_user, :correct_user
 
   def show
-    if !params[:reset1]
+    if params[:reset1]
       @all_channels = Channel.order(:name)
             @channels = Array.new
         @user.antennas.each do |antenna|

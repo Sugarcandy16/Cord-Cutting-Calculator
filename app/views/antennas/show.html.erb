@@ -33,7 +33,7 @@ function filterFunction() {
 <p><%= render '/users/form_antenna' %></p>
 
 <% if @channels == nil %>
-  <span>Ops, no channel yet, please contact admin.</span>
+  <span>Oops, no channel yet, please contact admin.</span>
 <% else %>
 <div style="margin-bottom: 20px;">
   <%= form_for(update_antenna_path) do |f| %>
@@ -55,6 +55,7 @@ function filterFunction() {
       </div>
   </div>
   <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= button_tag "Reset", type: :reset %>
   <% end %>
 </div>
 <% end %>

@@ -2,7 +2,7 @@
 <head>
 
 <script>
-$('#uncheck_all').on("click", function(){
+<%# $('#uncheck_all').on("click", function(){
   var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {};
   var $checkboxes = $("#checkbox-container :checkbox");
   $checkboxes.each(function(){
@@ -10,7 +10,21 @@ $('#uncheck_all').on("click", function(){
   });
   localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
   redirect_to :back
-  <%# redirect_back(fallback_location: root_path) %>
+  <%# redirect_back(fallback_location: root_path)
+});%>
+$(document).ready(function(){
+   $('#check_all').on("click", function() {
+     // grouping all the checkbox using the classname
+     var checkboxes = $("class name for the checkbox");
+     // check whether checkboxes are selected.
+     if(checkboxes.prop("checked")){
+        // if they are selected, unchecking all the checkbox
+        checkboxes.prop("checked",false);
+     } else {
+        // if they are not selected, checking all the checkbox
+        checkboxes.prop("checked",true);
+     }
+   });
 });
 <%#var Clear=function(){
   $('input[type="checkbox"]').prop('checked', false);
@@ -69,7 +83,7 @@ function filterFunction() {
       </div>
   </div>
   <%= f.submit "Submit", class: "btn btn-primary" %>
-  <%= button_tag 'Reset', type: 'reset', class:'btn btn-primary' %>
+  <%= button_tag 'Reset', id: 'reset', class:'btn btn-primary' %>
   
   <% end %>
 </div>

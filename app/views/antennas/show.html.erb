@@ -2,7 +2,7 @@
 <head>
 
 <script>
-$('#check_all').on("click", function(){
+$('#uncheck_all').on("click", function(){
   var check = $('input[type="checkbox"]');
   check.each(function(){
     $(this).attr('checked', false);
@@ -61,7 +61,7 @@ function filterFunction() {
       </div>
   </div>
   <%= f.submit "Submit", class: "btn btn-primary" %>
-  <%= button_tag 'select / unselect all', id: 'check_all', class:'b' %>
+  <%= button_tag 'Reset', id: 'uncheck_all', class:'btn btn-primary' %>
   <% end %>
 </div>
 <% end %>

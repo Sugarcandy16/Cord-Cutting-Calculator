@@ -3,10 +3,7 @@
 
 <script>
 $('#uncheck_all').on("click", function(){
-  var check = $('input[type="checkbox"]');
-  check.each(function(){
-    $(this).attr('checked', false);
-  });
+  $('#message_content').val('');
 });
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");

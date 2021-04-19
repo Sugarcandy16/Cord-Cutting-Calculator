@@ -133,11 +133,11 @@ function filterFunction3() {
               <h4>Budget</h4>
               <%= text_field_tag :budget, nil, placeholder: 'Enter your monthly budget', class: 'form-control'%>
 
-              <div>
+              <div style="display: inline-block">
                 <%= radio_button_tag "budget_type", true, true %>
                 <%= label_tag "budget_yearly", 'Monthly', display: "inline-block" %>
               </div>
-              <div>
+              <div style="display: inline-block">
                 <%= radio_button_tag "budget_type", false, false %>
                 <%= label_tag "budget_monthly", 'Yearly' %>
               </div>

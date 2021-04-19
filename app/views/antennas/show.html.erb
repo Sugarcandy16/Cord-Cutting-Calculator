@@ -3,7 +3,12 @@
 
 <script>
 $('#uncheck_all').on("click", function(){
-  $('#message_content').val('');
+  var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {};
+  var $checkboxes = $("#checkbox-container :checkbox");
+  $checkboxes.each(function(){
+    checkboxValues[this.id] = this.checked;
+  });
+  localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
 });
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");

@@ -69,11 +69,12 @@ function filterFunction() {
       </div>
   </div>
   <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= button_tag 'Reset', type: 'reset', class:'btn btn-primary' %>
   
   <% end %>
 </div>
 <% end %>
-  <%= button_tag 'Reset', type: 'reset', class:'btn btn-primary' %>
+  
   <%# link_to 'Reset', Clear(), class: 'btn btn-primary' %>
   <%= link_to 'Cancel and to back to profile', @user %>
 

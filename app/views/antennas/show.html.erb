@@ -9,7 +9,8 @@ $('#uncheck_all').on("click", function(){
     checkboxValues[this.id] = this.checked;
   });
   localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
-  redirect_back(fallback_location: root_path)
+  redirect_to :back
+  <%# redirect_back(fallback_location: root_path) %>
 });
 <%#var Clear=function(){
   $('input[type="checkbox"]').prop('checked', false);

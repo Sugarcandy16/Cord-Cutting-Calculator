@@ -2,9 +2,19 @@
 <head>
 
 <script>
-$('#uncheck_all').on("click", function(){
-  $('#message_content').val('');
-});
+<%#$('#uncheck_all').on("click", function(){
+  var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {};
+  var $checkboxes = $("#checkbox-container :checkbox");
+  $checkboxes.each(function(){
+    checkboxValues[this.id] = this.checked;
+  });
+  localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+  redirect_back(fallback_location: root_path)
+}); %>
+var Clear=function(){
+  $('input[type="checkbox"]').prop('checked', false);
+}
+
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -62,7 +72,8 @@ function filterFunction() {
   <% end %>
 </div>
 <% end %>
-  <%= button_tag 'Reset', id: 'uncheck_all', class:'btn btn-primary' %>
+  <%# button_tag 'Reset', id: 'uncheck_all', class:'btn btn-primary' %>
+  <%= link_to 'Reset', onclick: 'Clear()', class: 'btn btn-primary' %>
   <%= link_to 'Cancel and to back to profile', @user %>
 
 </div>

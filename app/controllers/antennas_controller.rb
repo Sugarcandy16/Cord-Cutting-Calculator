@@ -3,10 +3,10 @@ class AntennasController < ApplicationController
 
   def show
     @all_channels = Channel.order(:name)
-        @channels = Array.new
-      @user.antennas.each do |antenna|
-        @channels << Channel.find(antenna.channel_id)
-      end
+    @channels = Array.new
+    @user.antennas.each do |antenna|
+      @channels << Channel.find(antenna.channel_id)
+    end
     @user = User.find(params[:id])
     @antennas = Array.new
     @user.antennas.each do |antenna|

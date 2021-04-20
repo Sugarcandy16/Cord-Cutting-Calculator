@@ -14,7 +14,16 @@ class AntennasController < ApplicationController
         @antennas << antenna.channel_id
       end
     else
-      redirect_to show_antenna_path
+      @all_channels = Channel.order(:name)
+      @channels = Array.new
+      @user.antennas.each do |antenna|
+        @channels << Channel.find(antenna.channel_id)
+      end
+      @user = User.find(params[:id])
+      @antennas = Array.new
+      @user.antennas.each do |antenna|
+        @antennas << antenna.channel_id
+      end
     end
   end
   

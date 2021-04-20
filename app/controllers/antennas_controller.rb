@@ -13,9 +13,6 @@ class AntennasController < ApplicationController
       @user.antennas.each do |antenna|
         @antennas << antenna.channel_id
       end
-    else
-      redirect_to :back
-    end
   end
   
   def update_antenna

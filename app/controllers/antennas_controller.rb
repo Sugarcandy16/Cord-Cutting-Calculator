@@ -14,7 +14,7 @@ class AntennasController < ApplicationController
         @antennas << antenna.channel_id
       end
     else
-      redirect_to root_path
+      redirect_to :back
     end
   end
   

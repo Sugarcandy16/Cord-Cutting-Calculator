@@ -3,17 +3,19 @@ class OwnDevicesController < ApplicationController
 
 
   def show
+    if !params[:reset1]
     
-        @all_devices = Device.order(:name)
-          @devices = Array.new
+      @all_devices = Device.order(:name)
+      @devices = Array.new
       @user.own_devices.each do |own_device|
         @devices << Device.find(own_device.device_id)
-     end
+      end
     
-    @user = User.find(params[:id])
-    @own_devices = Array.new
-    @user.own_devices.each do |own_device|
-      @own_devices << own_device.device_id
+      @user = User.find(params[:id])
+      @own_devices = Array.new
+      @user.own_devices.each do |own_device|
+        @own_devices << own_device.device_id
+      end
     end
   end
   

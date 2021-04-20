@@ -106,7 +106,7 @@ class UsersController < ApplicationController
   end
   
   def result 
-    @results_overall = get_result(params[:id], params[:flag_one_pack], params[:budget], params[:flag_dvr])
+    @results_overall = get_result(params[:id], params[:flag_one_pack], params[:budget], params[:flag_dvr], params[:budget_type])
     @covered_antenna = Antenna.covered_channels(params[:id])
   end 
   

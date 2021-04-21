@@ -16,7 +16,7 @@
     <% @packages.each do |package| %>
       <tr class="show-list">
         <td width=40%><%= package.name %></td>
-        <td width=20%><%= link_to 'Show', package %></td>
+        <td width=20%><%= link_to 'Showed', package %></td>
         <td width=20%><%= link_to 'Edit', edit_package_path(package) %></td>
         <td width=20%><%= link_to 'Destroy', package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

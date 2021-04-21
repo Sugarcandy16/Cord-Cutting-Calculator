@@ -161,6 +161,31 @@ function filterFunction3() {
             <p>
               <%= f.submit "Calculate", class: "btn btn-primary"  %>
             </p>
+            
+            <p>
+    
+    <!--Arbin and Liz-->
+    <h4>
+      TEST
+      
+      <table width=100%>
+        <thead>
+          <tr class="show-list">
+            <th>Name</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @channels.each do |channel| %>
+            <tr class="show-list">
+              <td width=40%><%= channel.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </h4>
+    </p>
           <% end %>
 </div>
 <% end %>

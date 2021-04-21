@@ -180,6 +180,7 @@ function filterFunction3() {
           <% @channels.each do |channel| %>
             <tr class="show-list">
               <td width=40%><%= channel.name %></td>
+              <td width=20%><%= check_box_tag "must_have[]", channel.id, @must_have.include?(channel.id), class: "multi-checkbox"%></td>
             </tr>
           <% end %>
         </tbody>

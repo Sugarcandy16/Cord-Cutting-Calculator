@@ -169,10 +169,10 @@ function filterFunction3() {
     <!--Arbin and Liz-->
     <h4>
       TEST
-      <% form_tag projects_path, :method => 'get' do %>
+      <% form_for (table_search) :method => 'get' do |y| %>
         <p>
           <%= text_field_tag :name, params[:name] %>
-          <%= submit_tag "Search", :name => nil %>
+          <%= y.submit "Search" class: "btn btn-primary" %>
         </p>
       
         <table width=100%>

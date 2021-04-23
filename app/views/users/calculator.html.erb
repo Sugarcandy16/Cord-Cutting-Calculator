@@ -169,7 +169,7 @@ function filterFunction3() {
     <!--Arbin and Liz-->
     <h4>
       TEST
-      <% form_for(search_func) do |y| %>
+      <% form_for(search_field) do |y| %>
         <p>
           <%= text_field_tag :search, params[:search] %>
           <%= y.submit "Search", class: "btn btn-primary" %>

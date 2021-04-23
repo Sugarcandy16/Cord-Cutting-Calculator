@@ -163,18 +163,16 @@ function filterFunction3() {
             </p>
             
             <p>
-    <% end %>
     
     <!--Arbin and Liz-->
     <h4>
       TEST
-      <% form_for (table_search) do |y| %>
         <p>
           <%= text_field_tag :name, params[:name] %>
-          <%= y.submit "Search", class: "btn btn-primary" %>
+          <%= submit_tag "Search", :name => nil %>
         </p>
       
-        <table width=100%>
+      <table width=100%>
         <thead>
           <tr class="show-list">
             <th>Name</th>
@@ -195,10 +193,9 @@ function filterFunction3() {
       </table>
       <br>
       <%= will_paginate @channels %>
-      
-      <% end %>
     </h4>
     </p>
-  </div>
+</div>
+<% end %>
 </div>
 

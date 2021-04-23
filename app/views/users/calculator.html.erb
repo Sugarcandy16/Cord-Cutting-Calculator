@@ -168,7 +168,7 @@ function filterFunction3() {
     <h4>
       TEST
         <p>
-          <%= text_field_tag :search, params[:search] %>
+          <%= text_field_tag %>
           <%= submit_tag "Search", :name => nil %>
         </p>
       
@@ -181,7 +181,7 @@ function filterFunction3() {
         </thead>
 
         <tbody>
-          <% @channels = Channel.where("name like ?", "%#{params[:search]}%") %>
+          <% @channels = Channel.where("name like ?", "%#{params[:name]}%") %>
           <% @channels.each do |channel| %>
             <tr class="show-list">
               <td width=40%><%= channel.name %></td>

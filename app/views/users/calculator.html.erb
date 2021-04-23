@@ -181,6 +181,7 @@ function filterFunction3() {
         </thead>
 
         <tbody>
+          <% @channels = Channel.where("name like ?", "%#{params[:search]}%") %>
           <% @channels.each do |channel| %>
             <tr class="show-list">
               <td width=40%><%= channel.name %></td>

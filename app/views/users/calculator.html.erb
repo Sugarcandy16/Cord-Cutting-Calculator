@@ -170,8 +170,6 @@ function filterFunction3() {
     <h4>
       TEST
       <%= text_field_tag :search, nil, placeholder: 'Search', class: 'form-control'%>
-      <%= @channels = Channel.where("name like ?", "%#{params[:search]}%") %>
-      
       
       <table width=100%>
         <thead>

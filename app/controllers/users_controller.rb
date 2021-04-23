@@ -88,7 +88,7 @@ class UsersController < ApplicationController
 
   def calculator
     # @channels = Channel.order(:name)
-    @channels = Channel.order(:name).paginate(page: params[:page], per_page: 10)
+    @channels = Channel.order(:name).paginate(page: params[:page], per_page: 25)
     @user = User.find(params[:id])
     @must_have = Array.new
     @would_have = Array.new
@@ -112,8 +112,8 @@ class UsersController < ApplicationController
   end 
   
   def calculate
-    # @channels = Channel.order(:name)
-    @channels = Channel.order(:name).paginate(page: params[:page], per_page: 10)
+    @channels = Channel.order(:name)
+    # @channels = Channel.order(:name).paginate(page: params[:page], per_page: 10)
     Perference.delete_record(params[:id])
     Perference.create_record(params[:id], params[:must_have], params[:would_have], params[:ok_have])
     must_have = Antenna.remove_channel(params[:id], params[:must_have])

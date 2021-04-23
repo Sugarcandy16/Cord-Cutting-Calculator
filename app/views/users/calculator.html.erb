@@ -171,7 +171,7 @@ function filterFunction3() {
       <% form_for (table_search) :method => 'get' do |y| %>
         <p>
           <%= text_field_tag :name, params[:name] %>
-          <%= y.submit "Search" class: "btn btn-primary" %>
+          <%= y.submit "Search", class: "btn btn-primary" %>
         </p>
       
         <table width=100%>
@@ -200,4 +200,5 @@ function filterFunction3() {
     </h4>
     </p>
   </div>
+</div>
 

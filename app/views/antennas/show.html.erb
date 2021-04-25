@@ -2,6 +2,12 @@
 <head>
 
 <script>
+$('#uncheck_all').on("click", function(){
+  var cbxs = $('input[type="checkbox"]');
+  if(cbxs.prop("checked")){
+    cbxs.prop("checked", !cbxs.prop("checked"));
+  }
+})
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -55,6 +61,7 @@ function filterFunction() {
       </div>
   </div>
   <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= f.submit 'Reset', name: 'reset1', id: 'uncheck_all', class:'btn btn-primary' %>
   <% end %>
 </div>
 <% end %>

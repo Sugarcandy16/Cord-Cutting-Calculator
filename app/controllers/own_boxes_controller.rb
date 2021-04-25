@@ -2,15 +2,17 @@ class OwnBoxesController < ApplicationController
   before_action :logged_in_user, :correct_user
 
   def show
-        @all_set_top_boxes = SetTopBox.order(:name)
-          @set_top_boxes = Array.new
+    if !params[:reset1]
+      @all_set_top_boxes = SetTopBox.order(:name)
+      @set_top_boxes = Array.new
       @user.own_boxes.each do |own_box|
         @set_top_boxes << SetTopBox.find(own_box.set_top_box_id)
-     end
-    @user = User.find(params[:id])
-    @own_boxes = Array.new
-    @user.own_boxes.each do |own_box|
-      @own_boxes << own_box.set_top_box_id
+      end
+      @user = User.find(params[:id])
+      @own_boxes = Array.new
+      @user.own_boxes.each do |own_box|
+        @own_boxes << own_box.set_top_box_id
+      end
     end
   end
   

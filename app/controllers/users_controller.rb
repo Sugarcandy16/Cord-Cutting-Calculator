@@ -110,7 +110,7 @@ class UsersController < ApplicationController
     @results_overall = get_result(params[:id], params[:flag_one_pack], params[:budget], params[:flag_dvr], params[:budget_type])
     @covered_antenna = Antenna.covered_channels(params[:id])
     if params[:reset1]
-      render 'calculator'
+      redirect_to :action => "calculator" :id => params[:id]
     end
   end 
   

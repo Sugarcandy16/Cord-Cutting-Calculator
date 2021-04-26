@@ -20,7 +20,13 @@ class OwnBoxesController < ApplicationController
     user = User.find(params[:id])
     OwnBox.delete_record(params[:id])
     if params[:items] == nil
-      redirect_to user
+      respond_to do |format|
+        format.html { redirect_to request.referrer }
+      end
+    elsif params[:reset1]
+      respond_to do |format|
+        format.html { redirect_to request.referrer }
+      end
     else
       OwnBox.create_record(params[:id], params[:items])
       redirect_to user

@@ -21,7 +21,7 @@ class AntennasController < ApplicationController
     user = User.find(params[:id])
     Antenna.delete_record(params[:id])
     if params[:items] == nil
-      
+      Antenna.create_record(params[:id], params[:items])
     else
       Antenna.create_record(params[:id], params[:items])
       redirect_to user

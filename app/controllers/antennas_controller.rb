@@ -22,7 +22,11 @@ class AntennasController < ApplicationController
     Antenna.delete_record(params[:id])
     if params[:items] == nil
       respond_to do |format|
-        format.html { redirect_to request.referrer, notice: "successfully cleared all." }
+        format.html { redirect_to request.referrer }
+      end
+    elsif params[:reset1]
+      respond_to do |format|
+        format.html { redirect_to request.referrer }
       end
     else
       Antenna.create_record(params[:id], params[:items])

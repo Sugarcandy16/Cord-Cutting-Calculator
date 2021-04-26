@@ -13,8 +13,6 @@ class AntennasController < ApplicationController
       @user.antennas.each do |antenna|
         @antennas << antenna.channel_id
       end
-    else
-      render action: :show
 
     end
   end
@@ -23,7 +21,7 @@ class AntennasController < ApplicationController
     user = User.find(params[:id])
     Antenna.delete_record(params[:id])
     if params[:items] == nil
-      render action: :show
+      
     else
       Antenna.create_record(params[:id], params[:items])
       redirect_to user

@@ -1,4 +1,10 @@
 <script>
+$('#uncheck_all').on("click", function(){
+  var cbxs = $('input[type="checkbox"]');
+  if(cbxs.prop("checked")){
+    cbxs.prop("checked", !cbxs.prop("checked"));
+  }
+})
 function myFunction1() {
   document.getElementById("myDropdown1").classList.toggle("show");
 }

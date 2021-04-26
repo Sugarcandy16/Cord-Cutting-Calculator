@@ -143,7 +143,7 @@ class UsersController < ApplicationController
 
     if params[:reset1]
       Perference.delete_record(params[:id])
-      Perference.create_record(params[:id],, params[:would_have], params[:ok_have])
+      Perference.create_record(params[:id], params[:would_have], params[:ok_have])
       redirect_to :action => "calculator", :id => params[:id]
     else
       redirect_to result_path(params[:id], params[:flag_one_pack], params[:flag_dvr], params[:budget])

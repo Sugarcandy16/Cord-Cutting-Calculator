@@ -4,6 +4,7 @@ class OwnDevicesController < ApplicationController
 
   def show
     if !params[:reset1]
+
       @all_devices = Device.order(:name)
       @devices = Array.new
       @user.own_devices.each do |own_device|

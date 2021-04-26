@@ -87,7 +87,8 @@ class UsersController < ApplicationController
   end
 
   def calculator
-    @channels = Channel.order(:name)
+    # @channels = Channel.order(:name)
+    @channels = Channel.order(:name).paginate(page: params[:page], per_page: 25)
     @user = User.find(params[:id])
     @must_have = Array.new
     @would_have = Array.new
@@ -106,12 +107,13 @@ class UsersController < ApplicationController
   end
   
   def result 
-    @results_overall = get_result(params[:id], params[:flag_one_pack], params[:budget], params[:flag_dvr])
+    @results_overall = get_result(params[:id], params[:flag_one_pack], params[:budget], params[:flag_dvr], params[:budget_type])
     @covered_antenna = Antenna.covered_channels(params[:id])
   end 
   
   def calculate
     @channels = Channel.order(:name)
+    # @channels = Channel.order(:name).paginate(page: params[:page], per_page: 10)
     Perference.delete_record(params[:id])
     Perference.create_record(params[:id], params[:must_have], params[:would_have], params[:ok_have])
     must_have = Antenna.remove_channel(params[:id], params[:must_have])
@@ -123,7 +125,11 @@ class UsersController < ApplicationController
     else
       params[:budget] = params[:budget].to_f
     end
-
+    if params[:budget_type] == false
+      params[:budget_type] = params[:budget_type]/12
+    end
+    puts params[:budget_type]
+    
     if params[:flag_one_pack] == nil
       params[:flag_one_pack] = 'false'
     end

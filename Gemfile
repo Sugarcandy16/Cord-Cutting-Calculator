@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.0'
 
 gem 'rails',        '5.1.6'
 gem 'bcrypt',       '3.1.12'
@@ -15,7 +16,9 @@ gem 'bootstrap-will_paginate'
 gem 'will_paginate', '~> 3.1.0'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'seed_dump'
-
+gem 'webdrivers',   '~>4.0'
+gem 'watir',        '~>6.0'
+gem 'htmlentities'
 
 group :development, :test do
   # gem 'sqlite3', '1.3.13'
@@ -26,7 +29,6 @@ group :development, :test do
   gem 'database_cleaner', '1.4.1'
   gem 'simplecov', :require => false
   gem 'selenium-webdriver'
-  gem 'webdrivers', '~>3.0'
   gem 'capybara', '>= 2.15'
   gem 'cucumber'
   gem 'cucumber-rails', require: false

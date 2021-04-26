@@ -232,3 +232,43 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+
+# Then I check "CNN" in "Must have channels"
+Then /^(?:|I ) check "([^"]*)" in "([^"]*)"$/ do |label, parent|
+
+end
+# And I reset "Must have channels"
+Then /^(?:|I ) reset "([^"]*)"$/ do |parent|
+  
+end
+# Then I should see all "Must have channels" unchecked
+Then /^(?:|I )should see all "([^"]*)" unchecked/ do |parent|
+  with_scope(parent) do
+    fields.each do |field|
+      if field_checked.respond_to? :should
+      field_checked.should be_true
+    else
+      assert field_checked
+    end
+  end
+  end
+end
+
+Then /^the "([^"]*)" checkbox(?: within (.*))? should be checked$/ do |label, parent|
+  with_scope(parent) do
+    field_checked = find_field(label)['checked']
+    if field_checked.respond_to? :should
+      field_checked.should be_true
+    else
+      assert field_checked
+    end
+  end
+end
+
+
+When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
+  ratinglist.split(', ').each do |rating|
+    step %{I #{uncheck.nil? ? '' : 'un'}check "ratings#{rating}"}
+  end
+end

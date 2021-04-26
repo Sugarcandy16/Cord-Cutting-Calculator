@@ -2,12 +2,14 @@
 <head>
 
 <script>
+
 $('#uncheck_all').on("click", function(){
   var cbxs = $('input[type="checkbox"]');
   if(cbxs.prop("checked")){
     cbxs.prop("checked", !cbxs.prop("checked"));
   }
 })
+
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -39,7 +41,7 @@ function filterFunction() {
 <p><%= render '/users/form_antenna' %></p>
 
 <% if @channels == nil %>
-  <span>Ops, no channel yet, please contact admin.</span>
+  <span>Oops, no channel yet, please contact admin.</span>
 <% else %>
 <div style="margin-bottom: 20px;">
   <%= form_for(update_antenna_path) do |f| %>
@@ -60,12 +62,21 @@ function filterFunction() {
           </ul>
       </div>
   </div>
+  
+  
+  
   <%= f.submit "Submit", class: "btn btn-primary" %>
   <%= f.submit 'Reset', name: 'reset1', id: 'uncheck_all', class:'btn btn-primary' %>
+
   <% end %>
 </div>
 <% end %>
+  
+  <%# link_to 'Reset', Clear(), class: 'btn btn-primary' %>
   <%= link_to 'Cancel and to back to profile', @user %>
+  <div>
+    <%# f.submit 'Reset', name: 'reset1' id: 'uncheck_all', class:'btn btn-primary' %>
+  </div>
 
 </div>
 </body>

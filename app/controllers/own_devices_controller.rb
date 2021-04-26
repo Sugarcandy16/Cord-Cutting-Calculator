@@ -16,6 +16,8 @@ class OwnDevicesController < ApplicationController
       @user.own_devices.each do |own_device|
         @own_devices << own_device.device_id
       end
+    else
+      render 'show'
     end
   end
   

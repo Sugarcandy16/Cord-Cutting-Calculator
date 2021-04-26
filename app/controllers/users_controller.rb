@@ -117,35 +117,66 @@ class UsersController < ApplicationController
   def calculate
     @channels = Channel.order(:name)
     # @channels = Channel.order(:name).paginate(page: params[:page], per_page: 10)
-    Perference.delete_record(params[:id])
-    Perference.create_record(params[:id], params[:must_have], params[:would_have], params[:ok_have])
-    must_have = Antenna.remove_channel(params[:id], params[:must_have])
-    would_have = Antenna.remove_channel(params[:id], params[:would_have])
-    ok_have = Antenna.remove_channel(params[:id], params[:ok_have])
-    must_have, would_have, ok_have = Perference.remove_redudant(must_have, would_have, ok_have)
-    if params[:budget] == ''
-      params[:budget] = 9999
-    else
-      params[:budget] = params[:budget].to_f
-    end
-    if params[:budget_type] == false
-      params[:budget_type] = params[:budget_type]/12
-    end
-    puts params[:budget_type]
+    #Perference.delete_record(params[:id])
+    #Perference.create_record(params[:id], params[:must_have], params[:would_have], params[:ok_have])
+    #must_have = Antenna.remove_channel(params[:id], params[:must_have])
+    #would_have = Antenna.remove_channel(params[:id], params[:would_have])
+    #ok_have = Antenna.remove_channel(params[:id], params[:ok_have])
+    #must_have, would_have, ok_have = Perference.remove_redudant(must_have, would_have, ok_have)
+    #if params[:budget] == ''
+    #  params[:budget] = 9999
+    #else
+    #  params[:budget] = params[:budget].to_f
+    #end
+    #if params[:budget_type] == false
+     # params[:budget_type] = params[:budget_type]/12
+    #end
+    #puts params[:budget_type]
     
-    if params[:flag_one_pack] == nil
-      params[:flag_one_pack] = 'false'
-    end
+    #if params[:flag_one_pack] == nil
+    #  params[:flag_one_pack] = 'false'
+    #end
     
-    if params[:flag_dvr] == nil
-      params[:flag_dvr] = 'false'
-    end
+    #if params[:flag_dvr] == nil
+    #  params[:flag_dvr] = 'false'
+    #end
 
     if params[:reset1]
       Perference.delete_record(params[:id])
       Perference.create_record(params[:id], nil, params[:would_have], params[:ok_have])
       redirect_to :action => "calculator", :id => params[:id]
+    elsif params[:reset2]
+      Perference.delete_record(params[:id])
+      Perference.create_record(params[:id], params[:must_have], nil, params[:ok_have])
+      redirect_to :action => "calculator", :id => params[:id]
+    elsif params[:reset3]
+      Perference.delete_record(params[:id])
+      Perference.create_record(params[:id], params[:must_have], params[:would_have], nil)
+      redirect_to :action => "calculator", :id => params[:id]
     else
+      Perference.delete_record(params[:id])
+      Perference.create_record(params[:id], params[:must_have], params[:would_have], params[:ok_have])
+      must_have = Antenna.remove_channel(params[:id], params[:must_have])
+      would_have = Antenna.remove_channel(params[:id], params[:would_have])
+      ok_have = Antenna.remove_channel(params[:id], params[:ok_have])
+      must_have, would_have, ok_have = Perference.remove_redudant(must_have, would_have, ok_have)
+      if params[:budget] == ''
+        params[:budget] = 9999
+      else
+        params[:budget] = params[:budget].to_f
+      end
+      if params[:budget_type] == false
+        params[:budget_type] = params[:budget_type]/12
+      end
+      puts params[:budget_type]
+    
+      if params[:flag_one_pack] == nil
+        params[:flag_one_pack] = 'false'
+      end
+    
+      if params[:flag_dvr] == nil
+        params[:flag_dvr] = 'false'
+      end
       redirect_to result_path(params[:id], params[:flag_one_pack], params[:flag_dvr], params[:budget])
     end
   end

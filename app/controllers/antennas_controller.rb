@@ -14,7 +14,7 @@ class AntennasController < ApplicationController
         @antennas << antenna.channel_id
       end
     else
-      render 'show'
+      render action: :show
 
     end
   end

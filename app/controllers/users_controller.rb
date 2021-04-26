@@ -109,9 +109,9 @@ class UsersController < ApplicationController
   def result 
     @results_overall = get_result(params[:id], params[:flag_one_pack], params[:budget], params[:flag_dvr], params[:budget_type])
     @covered_antenna = Antenna.covered_channels(params[:id])
-    if params[:reset1]
-      redirect_to :action => "calculator", :id => params[:id]
-    end
+    #if params[:reset1]
+     # redirect_to :action => "calculator", :id => params[:id]
+    #end
   end 
   
   def calculate
@@ -141,7 +141,11 @@ class UsersController < ApplicationController
       params[:flag_dvr] = 'false'
     end
 
-    redirect_to result_path(params[:id], params[:flag_one_pack], params[:flag_dvr], params[:budget])
+    if params[:reset1]
+      redirect_to :action => "calculator", :id => params[:id]
+    else
+      redirect_to result_path(params[:id], params[:flag_one_pack], params[:flag_dvr], params[:budget])
+    end
   end
 
   private

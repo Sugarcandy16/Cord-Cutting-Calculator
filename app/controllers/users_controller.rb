@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       flash[:success] = "Sign up success!"
       redirect_to @user
     else
-      render 'new'
+     render 'new'
     end
 
   end

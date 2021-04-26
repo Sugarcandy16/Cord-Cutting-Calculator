@@ -11,13 +11,13 @@ Feature: Signing with Google
     And I fill in "Confirmation" with "test123pass"
     And I check "Sign up as admin"
     And I press "Create my account"
-    Then I should be on the user page
+    Then I should see "test@test.com"
     And I should see "Sign up success!" 
     Given I am on the login page
     When I fill in "Email" with "test@test.com"
     And I fill in "Password" with "test123pass"
     And I press "Login"
-    Then I should be on the user page
+    Then I should see "test@test.com"
     Then I should see "Package list"
     Then I follow "Package list"
     

@@ -107,6 +107,8 @@ class UsersController < ApplicationController
   end
   
   def result 
+    puts "BUDGET TYPE IN CONTROLLER result"
+    puts params[:budget_type]
     @results_overall = get_result(params[:id], params[:flag_one_pack], params[:budget], params[:flag_dvr], params[:budget_type])
     @covered_antenna = Antenna.covered_channels(params[:id])
     #if params[:reset1]
@@ -165,7 +167,7 @@ class UsersController < ApplicationController
       else
         params[:budget] = params[:budget].to_f
       end
-      if params[:budget_type] == "false"    #convert yearly budget to monthly
+      if params[:budget_type] == 'false'    #convert yearly budget to monthly
         params[:budget] = params[:budget]/12
       end
       puts "BUDGET TYPE: "

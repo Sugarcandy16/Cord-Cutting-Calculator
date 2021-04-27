@@ -165,7 +165,7 @@ class UsersController < ApplicationController
       else
         params[:budget] = params[:budget].to_f
       end
-      if params[:budget_type] == false
+      if params[:budget_type] == "false"
         params[:budget_type] = params[:budget_type]/12
       end
       puts "BUDGET TYPE: "

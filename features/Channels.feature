@@ -30,13 +30,15 @@ Scenario: Show and Edit and Destroy
     And I fill in "Confirmation" with "test123pass"
     And I check "Sign up as admin"
     And I press "Create my account"
-    Then I should be on the user page
+    #Then I should be on the user page
+    Then I should see "test@test.com"
     And I should see "Sign up success!" 
     Given I am on the login page
     When I fill in "Email" with "test@test.com"
     And I fill in "Password" with "test123pass"
     And I press "Login"
-    Then I should be on the user page
+    #Then I should be on the user page
+    Then I should see "test@test.com"
     When I follow "Channel list" 
     Then I should be on the channels page
     Then I follow "Show"
@@ -67,13 +69,15 @@ Scenario: Add new Channel
     And I fill in "Confirmation" with "test123pass"
     And I check "Sign up as admin"
     And I press "Create my account"
-    Then I should be on the user page
+    #Then I should be on the user page
+    Then I should see "test@test.com"
     And I should see "Sign up success!" 
     Given I am on the login page
     When I fill in "Email" with "test@test.com"
     And I fill in "Password" with "test123pass"
     And I press "Login"
-    Then I should be on the user page
+    #Then I should be on the user page
+    Then I should see "test@test.com"
     When I follow "Channel list" 
     Then I should be on the channels page
   When I am on the channels page

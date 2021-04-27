@@ -15,13 +15,15 @@ Background: Admin is logged in
     And I fill in "Confirmation" with "test123pass"
     And I check "Sign up as admin"
     And I press "Create my account"
-    Then I should be on the user page
+    #Then I should be on the user page
+    Then I should see "test@test.com"
     And I should see "Sign up success!" 
     Given I am on the login page
     When I fill in "Email" with "test@test.com"
     And I fill in "Password" with "test123pass"
     And I press "Login"
-    Then I should be on the user page
+    #Then I should be on the user page
+    Then I should see "test@test.com"
     
   Scenario: Show and Edit and Destroy
     When I follow "Device list" 

@@ -168,6 +168,7 @@ class UsersController < ApplicationController
       if params[:budget_type] == false
         params[:budget_type] = params[:budget_type]/12
       end
+      puts "BUDGET TYPE: "
       puts params[:budget_type]
     
       if params[:flag_one_pack] == nil

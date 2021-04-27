@@ -24,9 +24,10 @@ module UsersHelper
           results = Perference.cut_cord(must_have)
         end
         
-        if budget_type == false
+        if budget_type == "false"
             budget = budget * 12
         end
+
         results_overall = Perference.recommend_overall(results, id, budget, must_have, would_have, ok_have, flag_dvr, flag_one_pack)
         return results_overall
     end

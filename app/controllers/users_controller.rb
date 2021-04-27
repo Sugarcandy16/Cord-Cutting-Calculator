@@ -178,7 +178,7 @@ class UsersController < ApplicationController
       if params[:flag_dvr] == nil
         params[:flag_dvr] = 'false'
       end
-      redirect_to result_path(params[:id], params[:flag_one_pack], params[:flag_dvr], params[:budget])
+      redirect_to result_path(params[:id], params[:flag_one_pack], params[:flag_dvr], params[:budget], params[:budget_type])
     end
   end
 

@@ -120,7 +120,7 @@ class Perference < ApplicationRecord
   end
 
   # recommend according to the user profile and preference
-  def Perference.recommend_overall(results, user_id, budget, must_have, would_have, ok_have, dvr, flag_one_pack)
+  def Perference.recommend_overall(results, user_id, budget, must_have, would_have, ok_have, dvr, flag_one_pack, budget_type)
     # store user profile and result
     results_overall = []
     devices = []
@@ -187,6 +187,9 @@ class Perference < ApplicationRecord
         result_hash[:boxes] = 1
       else
         result_hash[:boxes] = 0
+      end
+      if budget_type == "false" #yearly expense
+        expense = expense * 12
       end
       result_hash[:expense] = expense
       if dvr == 'true' && flag_dvr == false

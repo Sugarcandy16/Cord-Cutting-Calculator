@@ -125,6 +125,10 @@ class Perference < ApplicationRecord
     results_overall = []
     devices = []
     boxes = []
+    
+    puts "BUDGET TYPE IN PERFERENCE"
+    puts budget_type
+    
     OwnDevice.where(user_id: user_id).each do |own_device|
       devices << own_device.device_id
     end
@@ -230,9 +234,15 @@ class Perference < ApplicationRecord
       results_overall << result_hash
     end
     if budget_type == "false" #yearly expense
-      puts "MULTIPLYING EXPENSE * 12"  
-      result_hash[:expense] = (expense * 12)
+      puts expense
+      puts "MULTIPLYING EXPENSE * 12"
+      expense = expense * 12
+      puts expense
+      result_hash[:expense] = expense
+    else
+      puts "did not go in if "
     end
+  
     # sort by score
     results_overall.sort_by! {|hash| -hash[:score]}
     return results_overall

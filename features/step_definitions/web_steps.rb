@@ -41,6 +41,10 @@ When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
+When /^(?:|I )fill in ([^"]*) with ([^"]*)$/ do |field, value|
+  fill_in(field, :with => value)
+end
+
 When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
@@ -231,4 +235,26 @@ end
 
 Then /^show me the page$/ do
   save_and_open_page
+end
+
+When /^I enter a budget$/ do
+  #fill_in "budget", with(20)
+  find('budget').set('20')
+end
+
+Then("I press calculate") do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then("I should see {string} budgets") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then("I check {string} in {string}") do |channel, category|
+  #select(channel, :from => category, :match => :first)]
+  find('#' + category).select(channel)
+end
+
+Then("I should see all {string} unchecked") do |string|
+  pending # Write code here that turns the phrase above into concrete actions
 end

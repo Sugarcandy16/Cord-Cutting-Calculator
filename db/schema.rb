@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20190404211338) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "antennas", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "channel_id"
+    t.bigint "user_id"
+    t.bigint "channel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_antennas_on_channel_id"
@@ -38,8 +41,8 @@ ActiveRecord::Schema.define(version: 20190404211338) do
   end
 
   create_table "own_boxes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "set_top_box_id"
+    t.bigint "user_id"
+    t.bigint "set_top_box_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["set_top_box_id"], name: "index_own_boxes_on_set_top_box_id"
@@ -47,8 +50,8 @@ ActiveRecord::Schema.define(version: 20190404211338) do
   end
 
   create_table "own_devices", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "device_id"
+    t.bigint "user_id"
+    t.bigint "device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["device_id"], name: "index_own_devices_on_device_id"
@@ -66,8 +69,8 @@ ActiveRecord::Schema.define(version: 20190404211338) do
   end
 
   create_table "perferences", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "channel_id"
+    t.bigint "user_id"
+    t.bigint "channel_id"
     t.integer "rate", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,8 +79,8 @@ ActiveRecord::Schema.define(version: 20190404211338) do
   end
 
   create_table "provide_channels", force: :cascade do |t|
-    t.integer "package_id"
-    t.integer "channel_id"
+    t.bigint "package_id"
+    t.bigint "channel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_provide_channels_on_channel_id"
@@ -93,8 +96,8 @@ ActiveRecord::Schema.define(version: 20190404211338) do
   end
 
   create_table "support_boxes", force: :cascade do |t|
-    t.integer "package_id"
-    t.integer "set_top_box_id"
+    t.bigint "package_id"
+    t.bigint "set_top_box_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["package_id"], name: "index_support_boxes_on_package_id"
@@ -102,8 +105,8 @@ ActiveRecord::Schema.define(version: 20190404211338) do
   end
 
   create_table "support_devices", force: :cascade do |t|
-    t.integer "package_id"
-    t.integer "device_id"
+    t.bigint "package_id"
+    t.bigint "device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["device_id"], name: "index_support_devices_on_device_id"

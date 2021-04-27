@@ -19,7 +19,8 @@ end
 
 Given(/^the following channels exist:$/) do |channels_table|
   channels_table.hashes.each do |channel_hash|
-    Channel.create channel_hash
+    channel_hash = Channel.new 
+    channel_hash.name = channel_hash["name"]
   end
 end
 

@@ -25,7 +25,7 @@ module NavigationHelpers
     when /^the signup\s?page$/
       signup_path
     when /^the calculator\s?page$/
-      '/calculator/1/input'
+      '/users/1/calculator'
     when /^the calculator recommendation\s?page$/
       '/calculator/1/recommendation'  
     when /^the package\s?page$/
@@ -73,7 +73,7 @@ module NavigationHelpers
       
     when /^the edit channel page for "(.*)"$/i
       edit_channel_path(Channel.find_by_name($1))
-      
+
     else
       begin
         page_name =~ /^the (.*) page$/

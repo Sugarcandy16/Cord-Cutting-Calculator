@@ -58,7 +58,7 @@ function filterFunction3() {
 <h1 class="title">Calculator</h1>
 <div style="margin-left: 15%; margin-right: 15%">
 <% if @channels == nil %>
-  <span>Ops, no channel yet, please contact admin.</span>
+  <span>Oops, no channel yet, please contact admin.</span>
 <% else %>
   <%= form_for(calculate_path) do |f| %>
     <div style="margin-bottom: 20px">
@@ -67,8 +67,8 @@ function filterFunction3() {
           <h5>(Be sure to select enough channels, or the calculate may not produce satisfying results.)</h5>
               <div class="wrapper dropdown-area">
                 <div class="btn-group">
-                  <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"> Select the Channels <span class="caret"></span></button>
-                    <ul id="myDropdown1" style= "width: 250px !important; height: 225px; overflow-y: scroll;" class="dropdown-menu" role="listbox">
+                  <button name="Must Have" data-toggle="dropdown" class="btn btn-default dropdown-toggle"> Select the Channels <span class="caret"></span></button>
+                    <ul  style= "width: 250px !important; height: 225px; overflow-y: scroll;" class="dropdown-menu" role="listbox">
                       <input type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction1()" class="search">
                       <% @channels.each do |channel| %>  
                         <li class="dropdown-list">
@@ -89,8 +89,8 @@ function filterFunction3() {
       Would like to have channels
           <div class="wrapper dropdown-area">
             <div class="btn-group">
-              <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"> Select the Channels <span class="caret"></span></button>
-                    <ul id="myDropdown2" style= "width: 250px !important; height: 225px; overflow-y: scroll;" class="dropdown-menu" role="listbox">
+              <button name="Like To Have" data-toggle="dropdown" class="btn btn-default dropdown-toggle"> Select the Channels <span class="caret"></span></button>
+                    <ul  style= "width: 250px !important; height: 225px; overflow-y: scroll;" class="dropdown-menu" role="listbox">
                       <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()" class="search">
                   <% @channels.each do |channel| %>  
                     <li class="dropdown-list">
@@ -112,8 +112,8 @@ function filterFunction3() {
       OK to have channels
           <div class="wrapper dropdown-area">
             <div class="btn-group">
-              <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"> Select the Channels <span class="caret"></span></button>
-                    <ul id="myDropdown3" style= "width: 250px !important; height: 225px; overflow-y: scroll;" class="dropdown-menu" role="listbox">
+              <button name="OK To Have" data-toggle="dropdown" class="btn btn-default dropdown-toggle"> Select the Channels <span class="caret"></span></button>
+                    <ul  style= "width: 250px !important; height: 225px; overflow-y: scroll;" class="dropdown-menu" role="listbox">
                       <input type="text" placeholder="Search.." id="myInput3" onkeyup="filterFunction3()" class="search">
                   <% @channels.each do |channel| %>  
                     <li class="dropdown-list">

@@ -1,6 +1,7 @@
 module UsersHelper
     
     def get_result(id, flag_one_pack, budget, flag_dvr, budget_type)
+        
         must_have = []
         Perference.where(user_id: id, rate: 3).find_each.each do |pf|
             must_have << pf.channel_id
@@ -24,13 +25,6 @@ module UsersHelper
           results = Perference.cut_cord(must_have)
         end
         
-        if budget_type == "false"
-            budget = budget * 12
-        
-        else
-            budget = 0
-        end
-
         results_overall = Perference.recommend_overall(results, id, budget, must_have, would_have, ok_have, flag_dvr, flag_one_pack)
         return results_overall
     end

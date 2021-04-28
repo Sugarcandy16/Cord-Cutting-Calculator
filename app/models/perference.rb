@@ -234,11 +234,8 @@ class Perference < ApplicationRecord
       results_overall << result_hash
     end
     if budget_type == "false" #yearly expense
-      puts expense
       puts "MULTIPLYING EXPENSE * 12"
-      expense = expense * 12
-      puts expense
-      result_hash[:expense] = expense
+      result_hash[:expense] = result_hash[:expense] * 12
     else
       puts "did not go in if "
     end

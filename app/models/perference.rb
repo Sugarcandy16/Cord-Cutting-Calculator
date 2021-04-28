@@ -194,6 +194,10 @@ class Perference < ApplicationRecord
       end
 
       result_hash[:expense] = expense
+      if budget_type == "false" #yearly expense
+      puts "MULTIPLYING EXPENSE * 12"
+      result_hash[:expense] = result_hash[:expense] * 12
+      end
       if dvr == 'true' && flag_dvr == false
         result_hash[:dvr] = 0
       else
@@ -233,12 +237,7 @@ class Perference < ApplicationRecord
         result_hash[:dvr] * 5
       results_overall << result_hash
     end
-    if budget_type == "false" #yearly expense
-      puts "MULTIPLYING EXPENSE * 12"
-      result_hash[:expense] = result_hash[:expense] * 12
-    else
-      puts "did not go in if "
-    end
+
   
     # sort by score
     results_overall.sort_by! {|hash| -hash[:score]}

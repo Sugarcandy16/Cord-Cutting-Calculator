@@ -165,7 +165,7 @@ class UsersController < ApplicationController
       if params[:budget] == ''
         params[:budget] = 9999
       else
-        params[:budget] = params[:budget].to_f
+        params[:budget] = params[:budget].round
       end
       if params[:budget_type] == 'false'    #convert yearly budget to monthly
         params[:budget] = (params[:budget]/12).round

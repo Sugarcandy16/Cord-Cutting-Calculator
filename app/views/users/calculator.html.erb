@@ -71,6 +71,28 @@ function filterFunction3() {
     }
   }
 }
+
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
 </script>
 
 <h1 class="title">Calculator</h1>
@@ -83,9 +105,9 @@ function filterFunction3() {
           <!--Arbin and Liz-->
     <h4>
       Choose from the table below channels you MUST have, would LIKE to have, and OK to have.
-      <input type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction1()" class="search">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
       
-      <table width=100%>
+      <table id=myTable width=100%>
         <thead>
           <tr class="show-list">
             <th>Name</th>

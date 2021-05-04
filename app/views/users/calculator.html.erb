@@ -80,79 +80,42 @@ function filterFunction3() {
 <% else %>
   <%= form_for(calculate_path) do |f| %>
     <div style="margin-bottom: 20px">
-      <p>
-      <h4>Must have channels </br><h4>
-          <h5>(Be sure to select enough channels, or the calculate may not produce satisfying results.)</h5>
-              <div class="wrapper dropdown-area">
-                <div class="btn-group">
-                  <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"> Select the Channels <span class="caret"></span></button>
-                    <ul id="myDropdown1" style= "width: 250px !important; height: 225px; overflow-y: scroll;" class="dropdown-menu" role="listbox">
-                      <input type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction1()" class="search">
-                      <% @channels.each do |channel| %>  
-                        <li class="dropdown-list">
-                          <%= label_tag do %>
-                            <%= check_box_tag "must_have[]", channel.id, @must_have.include?(channel.id), class: "multi-checkbox"%>
-                            <%= channel.name %>
-                          <% end %>
-                        </li>
-                      <% end %>  
-                    </ul>
-                </div>
-              </div>
-      <%= f.submit 'Reset Must Have', name: 'reset1', id: 'uncheck_must', class:'btn btn-primary' %>
-      </p>
-      <!--</div>-->
-    <!--Form for must have channels-->
-    <p>
+          <!--Arbin and Liz-->
     <h4>
-      Would like to have channels
-          <div class="wrapper dropdown-area">
-            <div class="btn-group">
-              <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"> Select the Channels <span class="caret"></span></button>
-                    <ul id="myDropdown2" style= "width: 250px !important; height: 225px; overflow-y: scroll;" class="dropdown-menu" role="listbox">
-                      <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()" class="search">
-                  <% @channels.each do |channel| %>  
-                    <li class="dropdown-list">
-                      <%= label_tag do %>
-                        <%= check_box_tag "would_have[]", channel.id, @would_have.include?(channel.id), class: "multi-checkbox"%>
-                        <%= channel.name %>
-                      <% end %>
-                    </li>
-                  <% end %>  
-                </ul>
-            </div>
-          </div>
-    <%= f.submit 'Reset Would Have', name: 'reset2', id: 'uncheck_would', class:'btn btn-primary' %>
-    </h4>
-    </p>
+      Choose from the table below channels you MUST have, would LIKE to have, and OK to have:
+      
+      <table width=100%>
+        <thead>
+          <tr class="show-list">
+            <th>Name</th>
+            <th>Must Have</th>
+            <th>Like to Have</th>
+            <th>OK to Have</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-    <!--Form for would have channels-->
-    <p>
-    <h4>
-      OK to have channels
-          <div class="wrapper dropdown-area">
-            <div class="btn-group">
-              <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"> Select the Channels <span class="caret"></span></button>
-                    <ul id="myDropdown3" style= "width: 250px !important; height: 225px; overflow-y: scroll;" class="dropdown-menu" role="listbox">
-                      <input type="text" placeholder="Search.." id="myInput3" onkeyup="filterFunction3()" class="search">
-                  <% @channels.each do |channel| %>  
-                    <li class="dropdown-list">
-                      <%= label_tag do %>
-                        <%= check_box_tag "ok_have[]", channel.id, @ok_have.include?(channel.id), class: "multi-checkbox"%>
-                        <%= channel.name %>
-                      <% end %>
-                    </li>
-                  <% end %>  
-                </ul>
-              </div>
-            </div>
-    <%= f.submit 'Reset Ok Have', name: 'reset3', id: 'uncheck_ok', class:'btn btn-primary' %>
+        <tbody>
+          <% @channels.each do |channel| %>
+            <tr class="show-list">
+              <td width=40%><%= channel.name %></td>
+              <td width=20%><%= check_box_tag "must_have[]", channel.id, @must_have.include?(channel.id), class: "multi-checkbox"%></td>
+              <td width=20%><%= check_box_tag "would_have[]", channel.id, @would_have.include?(channel.id), class: "multi-checkbox"%></td>
+              <td width=20%><%= check_box_tag "ok_have[]", channel.id, @ok_have.include?(channel.id), class: "multi-checkbox"%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= will_paginate @channels %>
     </h4>
-    </p>
-            <!--Form for would have channels-->
+    
+    <%= f.submit 'Reset Must Have', name: 'reset1', id: 'uncheck_must', class:'btn btn-primary' %>
+    <%= f.submit 'Reset Would Have', name: 'reset2', id: 'uncheck_would', class:'btn btn-primary' %>
+    <%= f.submit 'Reset Ok Have', name: 'reset3', id: 'uncheck_ok', class:'btn btn-primary' %>
             <p>
               <h4>Budget</h4>
-              <%= text_field_tag :budget, nil, placeholder: 'Enter your budget', class: 'form-control'%>
+              <%= text_field_tag :budget, nil, placeholder: 'Enter your monthly budget', class: 'form-control'%>
 
               <div style="display: inline-block">
                 <%= radio_button_tag "budget_type", true, true %>
@@ -166,7 +129,7 @@ function filterFunction3() {
             <p>
               <h4>
                 <%= label_tag do %>
-                  Prefer streaming services that support DVR?
+                  DVR
                   <%= check_box_tag :flag_dvr, true, false,  class: "multi-checkbox"%>
                 <% end %>
               </h4>
@@ -187,35 +150,5 @@ function filterFunction3() {
             <p>
   <% end %>
   <% end %>
-    
-    <!--Arbin and Liz-->
-    <h4>
-      TEST
-      <%= text_field_tag :search, nil, placeholder: 'Search', class: 'form-control'%>
-      
-      <table width=100%>
-        <thead>
-          <tr class="show-list">
-            <th>Name</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @channels.each do |channel| %>
-            <tr class="show-list">
-              <td width=40%><%= channel.name %></td>
-              <td width=20%><%= check_box_tag "must_have[]", channel.id, @must_have.include?(channel.id), class: "multi-checkbox"%></td>
-              <td width=20%><%= check_box_tag "would_have[]", channel.id, @would_have.include?(channel.id), class: "multi-checkbox"%></td>
-              <td width=20%><%= check_box_tag "ok_have[]", channel.id, @ok_have.include?(channel.id), class: "multi-checkbox"%></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <br>
-      <%= will_paginate @channels %>
-    </h4>
-    </p>
   </div>
 </div>
-

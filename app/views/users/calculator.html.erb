@@ -83,6 +83,7 @@ function filterFunction3() {
           <!--Arbin and Liz-->
     <h4>
       Choose from the table below channels you MUST have, would LIKE to have, and OK to have.
+      <input type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction1()" class="search">
       
       <table width=100%>
         <thead>
@@ -107,6 +108,7 @@ function filterFunction3() {
         </tbody>
       </table>
       <br>
+      <!-- %= will_paginate @channels %>-->
     </h4>
     
     <%= f.submit 'Reset Must Have', name: 'reset1', id: 'uncheck_must', class:'btn btn-primary' %>

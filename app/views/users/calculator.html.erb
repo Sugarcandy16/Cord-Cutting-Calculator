@@ -124,6 +124,7 @@ function myFunction() {
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
       
       <body onload="makeTableScroll();">
+      <div style="overflow-y: auto;">
       <table id=myTable width=100%>
         <thead>
           <tr class="show-list">
@@ -146,6 +147,7 @@ function myFunction() {
           <% end %>
         </tbody>
       </table>
+      </div>
       </body>
       <br>
       <!-- %= will_paginate @channels %>-->

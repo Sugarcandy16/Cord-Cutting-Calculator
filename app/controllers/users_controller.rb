@@ -89,17 +89,10 @@ class UsersController < ApplicationController
   def calculator
     # @channels = Channel.order(:name)
     @channels = Channel.order(:name).paginate(page: params[:page], per_page: 25)
-    @user = User.find(params[:id])
-    @previous_must = Array.new
+    @user = User.find(params[:id]
     @must_have = Array.new
     @would_have = Array.new
     @ok_have = Array.new
-    params[:previous_must].each do |c|
-      @previous_must << c
-    end
-    params[:must_have].each do |c|
-      @previous_must << c
-    end
     @user.perferences.each do |perference|
       if perference.rate == 3
         @must_have << perference.channel.id
@@ -164,8 +157,8 @@ class UsersController < ApplicationController
       redirect_to :action => "calculator", :id => params[:id]
     else
       Perference.delete_record(params[:id])
-      Perference.create_record(params[:id], params[:must_have], params[:would_have], params[:ok_have], params[:previous_must])
-      must_have = Antenna.remove_channel(params[:id], params[:previous_must])
+      Perference.create_record(params[:id], params[:must_have], params[:would_have], params[:ok_have])
+      must_have = Antenna.remove_channel(params[:id], params[:must_have])
       would_have = Antenna.remove_channel(params[:id], params[:would_have])
       ok_have = Antenna.remove_channel(params[:id], params[:ok_have])
       must_have, would_have, ok_have = Perference.remove_redudant(must_have, would_have, ok_have)

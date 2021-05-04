@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   def calculator
     # @channels = Channel.order(:name)
     @channels = Channel.order(:name).paginate(page: params[:page], per_page: 25)
-    @user = User.find(params[:id]
+    @user = User.find(params[:id])
     @must_have = Array.new
     @would_have = Array.new
     @ok_have = Array.new

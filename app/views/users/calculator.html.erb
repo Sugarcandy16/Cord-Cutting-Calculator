@@ -158,7 +158,7 @@ function myFunction() {
     <%= f.submit 'Reset Ok Have', name: 'reset3', id: 'uncheck_ok', class:'btn btn-primary' %>
             <p>
               <h4>Budget</h4>
-              <%= text_field_tag :budget, nil, placeholder: 'Enter your monthly budget', class: 'form-control'%>
+              <%= text_field_tag :budget, nil, placeholder: 'Enter your budget', class: 'form-control'%>
 
               <div style="display: inline-block">
                 <%= radio_button_tag "budget_type", true, true %>
@@ -172,7 +172,7 @@ function myFunction() {
             <p>
               <h4>
                 <%= label_tag do %>
-                  DVR
+                  Prefer streaming packages that support DVR?
                   <%= check_box_tag :flag_dvr, true, false,  class: "multi-checkbox"%>
                 <% end %>
               </h4>
